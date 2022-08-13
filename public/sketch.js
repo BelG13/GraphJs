@@ -51,9 +51,20 @@
             return;
         }
 
-        if (MODE == 1) {
-            currentGraph.add(new Node( null , mouseX , mouseY))
+
+        switch (MODE) {
+            case 1:
+                currentGraph.add(new Node( null , mouseX , mouseY))
+                break;
+
+            case 2:
+                currentGraph.findAndremove(mouseX , mouseY)
+                break;
+        
+            default:
+                break;
         }
+
 
     }
 

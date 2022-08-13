@@ -2,7 +2,9 @@
 var k = 0;
 function init(){
 
-    // we add some event listenerts on our buttons. those allow us to change the mode (add graph - add node - etc)
+    // we add some event listerners on our buttons. those allow us to change the mode (add graph - add node - etc)
+
+    // add-graph
     document.getElementById("add-graph").addEventListener('click' , () => {
 
         setMode(0); // mode 0 => graph selection mode
@@ -17,6 +19,7 @@ function init(){
 
     })
 
+    //add node
     document.getElementById("add-node").addEventListener('click' , () => {
 
         setMode(1); // mode 1 => node creation mode
@@ -27,6 +30,13 @@ function init(){
 
     })
 
+    // rem node
+    document.getElementById("rem-node").addEventListener('click' , () => {
+        setMode(2);
+        showMode();
+
+        updateClasses(id = 'rem-node' , className = "selected" , classListName = "functional")
+    })
 }
 
 
@@ -95,7 +105,7 @@ function updateClasses(id , className , classListName){
 
 
 function selectGraph(id){
-    
+
     // set the current selected graph to the graph with
     // the given id given as parameter.
 

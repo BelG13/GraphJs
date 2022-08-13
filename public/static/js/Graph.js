@@ -2,9 +2,13 @@
 class Node {
     // a node is the basic tool that a graph is made up from.
     constructor(value , x , y){
-        this.x     = x;
-        this.y     = y;
+
+        this.x     =     x; 
+        this.y     =     y; 
+        this.d     =    50;
+
         this.value = value;
+        
 
     }
 
@@ -12,7 +16,7 @@ class Node {
     draw() {
         // shows the node
         fill(255)
-        ellipse(this.x , this.y , 50 , 50)
+        ellipse(this.x , this.y , this.d , this.d)
         fill(255 , 0 , 0)
         text(""+this.value , this.x-10 , this.y)
         noFill()
@@ -21,7 +25,7 @@ class Node {
     draw(listColor){
         // shows the node with a particular color
         fill(listColor[0] , listColor[1] , listColor[2])
-        ellipse(this.x , this.y , 50 , 50)
+        ellipse(this.x , this.y , this.d , this.d)
         fill(255 , 0 , 0)
         text(""+this.value , this.x-10 , this.y)
         noFill()
@@ -54,14 +58,33 @@ class Graph {
 
     remove(node){
         // remove a node given as parameter
-        var index = this.nodes.indexOf(node)
-        this.nodes.splice(index , 1)
+
+        if(node instanceof Node){
+
+            var index = this.nodes.indexOf(node)
+            this.nodes.splice(index , 1)
+            return node;
+        }
+
+
+        return this.nodes.splice(node , 1);
     }
 
-    remove(index){
-        // remove the node that the index is 
-        // given as parameter.
-        this.nodes.splice(index , 1)
+    findAndremove(nodeX , nodeY){
+        // find the node corresponding to nodeX and nodeY and remove it
+
+        for(let i = this.nodes.length - 1 ; i >= 0 ; i--){
+            var node = this.nodes[i]
+            
+            // the distance between the clicked point and the center of the node
+            // has to be less than the radius
+
+            if(dist(node.x , node.y , nodeX , nodeY) < node.d / 2){
+                this.remove(node)
+                return node;
+            }
+
+        }
     }
 
     draw(){
@@ -70,4 +93,6 @@ class Graph {
             node.draw(this.colors)
         }
     }
+
+
 }
