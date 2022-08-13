@@ -1,0 +1,11 @@
+
+
+
+
+
+- optimize the display 
+- shortcut
+- remove node
+- move node
+- display vertex (create vertex and show them)
+- clear function so that I don't have to refreh the page each time i want a new drawing.

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph JS</title>
+
+    <!-- scripts -->
+    <script src="./sketch.js"            defer></script>
+    <script src="./static/js/p5.js"      defer></script>
+    <script src="socket.io/socket.io.js" defer></script>
+    <script src="./static/js/Graph.js"   defer></script>
+    <script src="./static/js/utils.js"   defer></script>
+
+    <!-- css -->
+
+    <link rel="stylesheet" href="./static/css/index.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <div class="functions grid-item">
+            <div class="colOne"></div>
+
+            <div class="colTwo">
+                <button id="add-graph" class="functional">
+                    <img src="./static/images/dessin.svg" alt="add_graph">
+                </button>
+                <button id="add-node" class="functional">
+                    <img src="./static/images/add.svg" alt="add_node">
+                </button>
+            </div>
+
+        </div>
+        <div class="graphs grid-item">
+            <main>
+                <div class="modeText">
+                    
+                </div>
+            </main>
+            <div class="log grid-item">
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

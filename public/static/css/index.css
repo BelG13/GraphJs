@@ -1,0 +1,90 @@
+
+* {
+    padding: 0;
+    margin:0;
+}
+
+.container {
+    display : grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.grid-item {
+    width:100%;
+}
+
+.graphs {
+    display : grid;
+    grid-template-rows: 10fr 3fr;
+}
+
+main {
+    border-left: solid 2px;
+    background-color: brown;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.functions {
+    border-right: solid 2px;
+    display:grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.graph-elem {
+    height:50px;
+    text-align:center;
+}
+
+.log {
+    border-top: solid 2px;
+}
+
+.colTwo img {
+    width:70%;
+}
+
+.colTwo{
+    text-align : center;
+}
+
+button {
+    cursor:pointer;
+}
+
+.colTwo button {
+    background-color: cadetblue;
+}
+
+button.selected {
+    background-color: blueviolet;
+}
+
+.modeText {
+    position:absolute;
+    z-index: 2;
+    background-color: rgb(29, 77, 235);
+    width: 100px;
+    height: 50px;
+    border-radius: 12px;
+
+    color: white;
+    text-align: center;
+    top:3%;
+    right:3%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.colOne button {
+    width:100%;
+}
+
+.graphSelected {
+    border: solid 1px red;
+}
