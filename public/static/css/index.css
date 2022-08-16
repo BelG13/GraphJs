@@ -6,7 +6,7 @@
 
 .container {
     display : grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 1fr 10fr;
 }
 
 .grid-item {
@@ -26,12 +26,13 @@ main {
 canvas {
     width: 100%;
     height: 100%;
+    margin: 1%;;
 }
 
 .functions {
     border-right: solid 2px;
     display:grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 5fr 2fr;
 }
 
 .graph-elem {
@@ -57,6 +58,7 @@ button {
 
 .colTwo button {
     background-color: cadetblue;
+    margin-top:4%;
 }
 
 button.selected {
@@ -87,4 +89,153 @@ button.selected {
 
 .graphSelected {
     border: solid 1px red;
+}
+
+button.alert.selected {
+    background-color: brown;
+}
+
+.hidden {
+    display: none;
+}
+
+.select-graph-delete {
+    position: absolute;
+    width: 400px;
+    height : 400px;
+
+    top : 50%;
+    left: 50%;
+    background-color: whitesmoke;
+
+    transform: translate(-50% , -50%);
+    border-radius : 20px;
+    border: solid 1px;
+
+}
+
+.select-graph-delete .out-icon {
+    border-bottom:solid 1px;
+    height : 10%;
+}
+
+.select-graph-delete .infos {
+    height:88%;
+}
+
+
+.out-icon {
+    display:grid;
+    grid-template-columns : 2fr 1fr;
+}
+
+.out-icon span {
+    display:flex;
+    justify-content : center;
+    align-items : center;
+    margin-left:50%;
+}
+
+.out-icon-btn {
+    border:none;
+    background-color:inherit;
+    width:23%;
+    border-radius : 20px;
+    margin-left : 75%;
+}
+
+.out-icon img{
+    width:100%;
+}
+
+.infos select {
+    width:40%;
+    text-align:center;
+    height : 80%;
+    border-radius: 12px;
+}
+
+
+.infos .infos-elem {
+    width:100%;
+    display:flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.infos > .infos-elem > select {
+    width:80%;
+
+}
+
+.infos > #elem-1 {
+    height: 80%;
+}
+
+.infos-elem > button {
+    width: 40%;
+    padding: 1%;
+    font-weight: bold;
+    background-color:rgb(250 , 10 , 0);
+    border:none;
+    border-radius:6px;
+}
+
+
+
+/* create graphs */
+
+.create-graph {
+    position: absolute;
+    width: 400px;
+    height : 200px;
+
+    top : 50%;
+    left: 50%;
+    background-color: whitesmoke;
+
+    transform: translate(-50% , -50%);
+    border-radius : 20px;
+    border: solid 1px;
+
+}
+
+.create-graph > .infos {
+    margin : 3%;
+}
+
+.create-graph > .infos > .infos-elem{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.create-graph > .infos > .infos-elem > input {
+    width: 90%;
+}
+
+.create-graph > .infos > #elem-2 {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-graph > .infos > #elem-2 > button {
+    background-color: blue;
+    color: white;
+}
+
+.create-graph > .infos > #elem-2 > button:hover {
+    background-color: lightgreen;
+    color: white;
+}
+
+
+
+/* log info */
+
+.log {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
 }

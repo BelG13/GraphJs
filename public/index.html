@@ -39,9 +39,19 @@
                     <img src="./static/images/add.svg" alt="add_node">
                 </button>
 
+                <!-- add vertex button -->
+                <button id="add-vertex" class="functional">
+                    <img src="./static/images/vertex.svg" alt="add_vertex">
+                </button>
+
                 <!-- remove node button -->
                 <button id="rem-node" class="functional">
-                    <img src="./static/images/trash.svg" alt="add_node">
+                    <img src="./static/images/trash.svg" alt="rem_node">
+                </button>
+
+                <!-- remove a graph -->
+                <button id="rem-graph" class="functional alert">
+                    <img src="./static/images/delete_graph.svg" alt="rem_node">
                 </button>
             </div>
 
@@ -57,8 +67,81 @@
             </main>
             <div class="log grid-item">
 
+                <div class="log-elem">
+                    Hamiltonian Cycle
+                </div>
+                <div class="log-elem">
+                    Deep first search
+                </div>
+                <div class="log-elem">
+                    breath first search
+                </div>
+                <div class="log-elem">
+                    labelN
+                </div>
+
             </div>
         </div>
+    </div>
+
+    <!-- gosht div delete grph -->
+
+    <div class="select-graph-delete hidden">
+        <div class="out-icon">
+            <span>
+                Select graphs
+            </span>
+            <button class="out-icon-btn" id="close-select-graph-btn">
+                <img src="./static/images/x.svg" alt="x">
+            </button>
+        </div>
+        <div class="infos">
+
+            <div class="infos-elem" id="elem-1">
+                <select name="graphs" class="infos-elem" id="graph-select" multiple></select>
+            </div>
+
+            <div class="infos-elem" id="elem-2">
+                <button id="delete-graphs" class="info-elem">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- gosth div create graph -->
+
+    <div class="hidden create-graph">
+        <div class="out-icon">
+            <span>
+                Create your graph
+            </span>
+            <button class="out-icon-btn" id="close-create-graph-btn">
+                <img src="./static/images/x.svg" alt="x">
+            </button>
+        </div>
+
+        <div class="infos">
+
+            <div class="infos-elem" id="elem-1">
+
+                <span>Graph name : </span>
+                <input type="text" id="graph-name-input">
+
+                <span>Red nuance : </span>
+                <input type="text" id="red-nuance">
+
+                <span>Green nuance</span>
+                <input type="text" id="green-nuance">
+
+                <span>blue nuance</span>
+                <input type="text" id="blue-nuance">
+
+            </div>
+
+            <div class="infos-elem" id="elem-2">
+                <button id="create-graph-btn" class="info-elem">Create</button>
+            </div>
+        </div>
+        
     </div>
     
 </body>
