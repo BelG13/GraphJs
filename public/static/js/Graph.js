@@ -3,15 +3,25 @@ class Node {
     // a node is the basic tool that a graph is made up from.
     constructor(value , x , y){
 
-        this.x     =     x; 
-        this.y     =     y; 
-        this.d     =    50;
+        if(value instanceof Object){
+            this.x = value.x
+            this.y = value.y
+            this.value = value.value
 
-        this.value = value;
+        }
+        
+        else {
+            this.value = value;
+            this.x     =     x; 
+            this.y     =     y; 
+        }
+
+
+        this.d     =    50;
+        this.id    =  null;
         
 
     }
-
 
     draw() {
         // shows the node
@@ -19,7 +29,7 @@ class Node {
         fill(255)
         ellipse(this.x , this.y , this.d , this.d)
         fill(255 , 0 , 0)
-        text(""+this.value , this.x-10 , this.y)
+        text(""+this.id , this.x-10 , this.y)
         noFill()
     }
 
@@ -29,7 +39,7 @@ class Node {
         fill(listColor[0] , listColor[1] , listColor[2])
         ellipse(this.x , this.y , this.d , this.d)
         fill(255 , 0 , 0)
-        text(""+this.value , this.x-10 , this.y)
+        text(""+this.id , this.x-10 , this.y)
         noFill()
     }
 }
@@ -64,7 +74,7 @@ class Graph {
         }
 
         else {
-            this.colors = [random(255) , random(255) , random(255)]
+            this.colors = [Math.random() * 255 , Math.random() * 255 , Math.random() * 255]
         }
 
         this.nodes = []
@@ -74,6 +84,7 @@ class Graph {
         //counter
 
         this.counter = 0;
+        this.idCounter = 0;
     }
 
     add(node){
@@ -81,6 +92,10 @@ class Graph {
         // we add a new node to the graph
         if(node.value === null){
             node.value = this.counter++;
+        }
+
+        if(node.id === null){
+            node.id = this.idCounter++;
         }
 
         this.nodes.push(node)

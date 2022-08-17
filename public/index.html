@@ -7,11 +7,12 @@
     <title>Graph JS</title>
 
     <!-- scripts -->
-    <script src="./sketch.js"            defer></script>
-    <script src="./static/js/p5.js"      defer></script>
-    <script src="socket.io/socket.io.js" defer></script>
-    <script src="./static/js/Graph.js"   defer></script>
-    <script src="./static/js/utils.js"   defer></script>
+    <script src="./sketch.js"               defer></script>
+    <script src="./static/js/p5.js"         defer></script>
+    <script src="socket.io/socket.io.js"    defer></script>
+    <script src="./static/js/Graph.js"      defer></script>
+    <script src="./static/js/utils.js"      defer></script>
+    <script src="./static/js/algoButtons.js" defer></script>
 
     <!-- css -->
 
@@ -68,16 +69,49 @@
             <div class="log grid-item">
 
                 <div class="log-elem">
-                    Hamiltonian Cycle
+
+                    <p>Hamiltonian cycle</p>
+                    
+                    <div class="further">
+                        <input type="text">
+                        <button class="valid-algo" id="h-cycle">
+                            Compute
+                        </button>
+                    </div>
+
                 </div>
                 <div class="log-elem">
-                    Deep first search
+                    <p>Deep first search</p>
+                    
+                    <div class="further">
+                        <input type="text" id="dfs-input">
+                        <button class="valid-algo" id="dfs">
+                            Compute
+                        </button>
+                    </div>
+
                 </div>
                 <div class="log-elem">
-                    breath first search
+                    <p>breath first search</p>
+                    
+                    <div class="further">
+                        <input type="text">
+                        <button class="valid-algo" id="bfs">
+                            Compute
+                        </button>
+                    </div>
+
                 </div>
                 <div class="log-elem">
-                    labelN
+                    <p>labelN</p>
+                    
+                    <div class="further">
+                        <input type="text">
+                        <button class="valid-algo" id="labelN">
+                            Compute
+                        </button>
+                    </div>
+
                 </div>
 
             </div>

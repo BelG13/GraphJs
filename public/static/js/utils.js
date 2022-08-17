@@ -96,7 +96,19 @@ function init(){
 
     document.getElementById("delete-graphs").addEventListener('click' , () => {
         for(let g of document.getElementById("graph-select").options){
+
             g.selected ? graphs.splice(graphs.indexOf(getGraphByName(g.value)) , 1) : () => {};
+
+            // if the currentGraph is selected to be deleted too
+            // we set currengrapth to null after the supression
+            // so the next checks may raise an error (currentGraph is null)
+            
+            try {
+                g.selected && (currentGraph.name === g.value) ? currentGraph = null : () => {};
+            } catch (error) {
+                console.log(error);
+            }
+
         }
 
         refresh()

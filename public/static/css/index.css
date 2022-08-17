@@ -239,3 +239,19 @@ button.alert.selected {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
 }
+
+
+.log > .log-elem {
+    text-align: center;
+    padding: 5%;
+}
+
+.log > .log-elem > .further {
+    display: grid;
+}
+
+.log > .log-elem > .further > button {
+    width: 50%;
+    margin:auto;
+    
+}

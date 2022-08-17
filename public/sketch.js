@@ -7,10 +7,12 @@
     const BOX_SIZE = 100;
 
     // variables
-    var         size;
-    var         MODE;
-    var currentGraph;
-    var       graphs;
+    var          size;
+    var          MODE;
+    var  currentGraph;
+    var        graphs;
+    var  canvas_width;
+    var canvas_height;
 
     // mode gloabAL variable
     var forConnect;
@@ -26,7 +28,10 @@
     function setup(){
 
         // drawing setup
-        createCanvas(innerWidth - 150 ,innerHeight - 167)
+        canvas_height = innerHeight - 167
+        canvas_width  =  innerWidth - 150
+
+        createCanvas(canvas_width ,canvas_height)
         size = max(Math.floor(width / BOX_SIZE) , Math.floor(height/ BOX_SIZE))
 
         //variables setup
@@ -42,6 +47,26 @@
         //  server part
         socket = io.connect('localhost:3000') // connection 
 
+        socket.on('dfs' , (data) => {
+            console.log(data);
+            var newGraph = new Graph(data.name)
+
+            data.nodes.map( obj => {
+                var newNode = new Node(obj)
+                newGraph.add(newNode)
+            })
+
+            for(let i = 1 ; i < newGraph.nodes.length ; i++){
+                newGraph.vertexes.push(
+                    new Vertex(newGraph.nodes[i-1] , newGraph.nodes[i])
+                )
+            }
+
+            
+            graphs.push(newGraph)
+            refresh()
+        })
+
 
     }
 
@@ -53,10 +78,8 @@
 
     function mousePressed() {
 
-        if(mouseX<0){
-            return;
-        }
-
+        if(mouseX<0)return;
+        if(mouseY > canvas_height)return;
 
         switch (MODE) {
             // each time we change the current mode we have to set forConnet to []
@@ -103,10 +126,7 @@
     function draw(){
 
         background(255);
-        
-        for(let graph of graphs){
-            graph.draw()
-        }
+        currentGraph == null ? () => {} : currentGraph.draw()
 
     }
 
