@@ -42,7 +42,7 @@ You are now ready for using the GraphJS.
 
 In this section I'm going to explain how to use GraphJS features.
 
-**Pt.1 :  Drawing Button**
+**Pt.1 :  Drawing Buttons**
 
 **I/ Adding a new graph**
 
@@ -54,9 +54,10 @@ first click on the **plus** button
 This button opens a interface that you use
 to give your graph basic attributes , such as **name** and **RGB** color.
 
-<img src="./assets/images/add_graph_view.png" width="40%" align="right">
 the interface looks like this :
+<img src="./assets/images/add_graph_view.png">
 
+<br>
 Fill the form with your wishes and click on **create**.
 
 you should see on the left that a new element has appeared.
