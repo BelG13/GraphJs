@@ -4,116 +4,21 @@ function init(){
 
     // we add some event listerners on our buttons. those allow us to change the mode (add graph - add node - etc)
 
-    // add-graph
-    document.getElementById("add-graph").addEventListener('click' , () => {
-
-        setMode(0); // mode 0 => graph selection mode
-
-        document.getElementsByClassName("create-graph")[0].classList.toggle("hidden")
-        
-        // highlight the button coresponding to the current mode
-        updateClasses(id = "add-graph" , className = "selected" , classListName = "functional")
+    // Graphs
+    addGraphSetup()
+    createGraphSetup()
 
 
-    })
+    // Nodes
+    addNodeSetup()
+    remNodeSetup()
+    moveNodeSetup()
+    addVertexSetup()
 
-    // the close btn for the add-graph panel
-
-    document.getElementById("close-create-graph-btn").addEventListener('click' , () => {
-
-        document.getElementsByClassName("create-graph")[0].classList.toggle("hidden");
-        setMode(-1)
-
-    })
-
-    // create button from the create button panel
-
-    document.getElementById("create-graph-btn").addEventListener('click' , () => {
-
-        createAndDisplay(
-
-                document.getElementById('graph-name-input').value,
-                parseInt(document.getElementById('red-nuance').value),
-                parseInt(document.getElementById('green-nuance').value),
-                parseInt(document.getElementById('blue-nuance').value)
-        )
-
-        document.getElementById("close-create-graph-btn").click()
-
-    })
-
-    //add node
-    document.getElementById("add-node").addEventListener('click' , () => {
-
-        setMode(1); // mode 1 => node creation mode
-
-        // highlight the button coresponding to the current mode
-        updateClasses(id = "add-node" , className = "selected" , classListName = "functional")
-
-    })
-
-    //add vertex
-    document.getElementById("add-vertex").addEventListener('click' , () => {
-        setMode(2);
-
-        updateClasses(id = "add-vertex" , className = "selected" , classListName = "functional")
-    })
-
-    // rem node
-    document.getElementById("rem-node").addEventListener('click' , () => {
-        setMode(3);
-
-        updateClasses(id = 'rem-node' , className = "selected" , classListName = "functional")
-    })
+    
 
     // rem graph
-    document.getElementById("rem-graph").addEventListener('click' , () => {
-        setMode(4);
-
-        document.getElementsByClassName("select-graph-delete")[0].classList.toggle('hidden')
-
-        // we add the graphs
-        document.getElementById("graph-select").innerHTML = 0;
-        graphs.map(x => {
-            document.getElementById("graph-select").innerHTML += `<option id="graph-select-${x.name}" value='${x.name}'> ${x.name} </option>`;
-        })
-
-
-        updateClasses(id = 'rem-graph' , className = "selected" , classListName = "functional")
-        
-    })
-
-    // the close button for the graph deletion selection
-
-    document.getElementById("close-select-graph-btn").addEventListener('click' , () => {
-
-        document.getElementsByClassName("select-graph-delete")[0].classList.toggle("hidden");
-        setMode(-1)
-
-    })
-
-    // the delete button on the <delete-graph-panel>
-
-    document.getElementById("delete-graphs").addEventListener('click' , () => {
-        for(let g of document.getElementById("graph-select").options){
-
-            g.selected ? graphs.splice(graphs.indexOf(getGraphByName(g.value)) , 1) : () => {};
-
-            // if the currentGraph is selected to be deleted too
-            // we set currengrapth to null after the supression
-            // so the next checks may raise an error (currentGraph is null)
-            
-            try {
-                g.selected && (currentGraph.name === g.value) ? currentGraph = null : () => {};
-            } catch (error) {
-                console.log(error);
-            }
-
-        }
-
-        refresh()
-        document.getElementById("close-select-graph-btn").click()
-    })
+    remGraphSetup()
 }
 
 
@@ -211,14 +116,184 @@ function updateClasses(id , className , classListName){
 
 }
 
+// setup functions
 
-function selectGraph(id){
+function generalButtonSetup(button_id , mode_id , toggle=false , toggleClassName){
 
-    // set the current selected graph to the graph with
-    // the given id given as parameter.
+    /**
+    * Initialize the eventListener for most buttons
+    * @param {string} button_id  id of the concerded button
+    * @param {Integer} mode_id -id of the corresponding mode
+    * @return {void}
+    */
 
-    currentGraph = getGraphByName(id);
-    updateClasses(id = id , className = "graphSelected" , classListName = "graph-elem")
+    document.getElementById(button_id).addEventListener('click' , () => {
+
+        setMode(mode_id);
+
+        if(toggle){
+            document.getElementsByClassName(toggleClassName)[0].classList.toggle("hidden");
+        }
+        
+        // highlight the button coresponding to the current mode
+        updateClasses(id = button_id , className = "selected" , classListName = "functional")
+
+
+    })
+}
+
+
+function addGraphSetup(){
+
+    /**
+    * initialize the add-graph button
+    * @return {void}
+    */
+
+    generalButtonSetup("add-graph" , 0 , toggle=true , toggleClassName = "create-graph")
+}
+
+function createGraphSetup(){
+    /**
+    * Initialize the event listeners of the buttons from the interface that helps to create graph.
+    * @return {void}
+    */
+    document.getElementById("create-graph-btn").addEventListener('click' , () => {
+
+        createAndDisplay(
+
+                document.getElementById('graph-name-input').value,
+                parseInt(document.getElementById('red-nuance').value),
+                parseInt(document.getElementById('green-nuance').value),
+                parseInt(document.getElementById('blue-nuance').value)
+        )
+        
+        document.getElementById("close-create-graph-btn").click()
+
+    })
+
+    // the close button
+
+    document.getElementById("close-create-graph-btn").addEventListener('click' , () => {
+
+        document.getElementsByClassName("create-graph")[0].classList.toggle("hidden");
+        setMode(-1)
+
+    })
+}
+
+
+function addNodeSetup(){
+    /**
+    * initialize the add-node button
+    * @return {void}
+    */
+
+    generalButtonSetup("add-node" , 1)
+}
+
+function remNodeSetup(){
+    /**
+     * initialize rem-node button
+     * @return {void}
+     */
+
+    generalButtonSetup("rem-node" , 3)
+}
+
+function moveNodeSetup(){
+    
+    /**
+    * initialize the move-node button
+    * @return {void}
+    */
+    generalButtonSetup("move-node" , 4)
+}
+
+function addVertexSetup(){
+    /**
+     * initialize rem-node button
+     * @return {void}
+     */
+
+    generalButtonSetup("add-vertex" , 2)
+}
+
+function remGraphSetup(){
+    /**
+    * initialize the rem-graph button
+    * @return {void}
+    */
+
+    // generalButtonSetup("rem-graph" , 4 , true , "select-graph-delete")
+
+    document.getElementById("rem-graph").addEventListener('click' , () => {
+
+        setMode(4);
+
+        // add graphs's name into the select tag
+
+        document.getElementById("graph-select").innerHTML = 0;
+        try {
+            graphs.map(x => {
+                document.getElementById("graph-select").innerHTML += `<option id="graph-select-${x.name}" value='${x.name}'> ${x.name} </option>`;
+            })
+        } catch (error) {
+            console.log(error);
+        }
+
+        document.getElementsByClassName("select-graph-delete")[0].classList.toggle("hidden");
+        
+        // highlight the button coresponding to the current mode
+        updateClasses(id = "rem-graph" , className = "selected" , classListName = "functional")
+
+    })
+
+    // the close button for the graph deletion selection
+
+    document.getElementById("close-select-graph-btn").addEventListener('click' , () => {
+
+        document.getElementsByClassName("select-graph-delete")[0].classList.toggle("hidden");
+        setMode(-1)
+
+    })
+
+
+    // the delete button
+
+    document.getElementById("delete-graphs").addEventListener('click' , () => {
+        for(let g of document.getElementById("graph-select").options){
+
+            g.selected ? graphs.splice(graphs.indexOf(getGraphByName(g.value)) , 1) : () => {};
+
+            // if the currentGraph is selected to be deleted too
+            // we set currengrapth to null after the supression
+            // so the next checks may raise an error (currentGraph is null)
+            
+            try {
+                g.selected && (currentGraph.name === g.value) ? currentGraph = null : () => {};
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+
+        refresh()
+        document.getElementById("close-select-graph-btn").click()
+    })
+
+}
+
+
+function selectGraph(name){
+
+    /**
+    * the current graph becomes the grave you've clicked on.
+    * @param {int} name graphName
+    */
+
+    currentGraph = getGraphByName(name);
+    updateClasses(id = name , className = "graphSelected" , classListName = "graph-elem")
 
 }
 

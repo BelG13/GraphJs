@@ -104,18 +104,52 @@ Now select the nodes you want to delete and voila.
 
 <br>
 
-**V/ Delete graph**
+**V/ Move Node**
+
+moving node is quite easy.
+<img src="./assets/images/move_node_view.png" width="50" height="50" align="right">
+
+click on the **move node button** and move the node you want to by dragging it with the mouse.
+
+**VI/ Delete graph**
 
 
 This is the last button on the left panel.
 <img src="./assets/images/minus_graph_view.png" width="50" height="50" align="right">
 
-Click on the it.
+Click on it.
 
-ThereAfter an interface is about to pop up. on this interface you can select all the graphs you want to delete and then click on **Delete**.
+Thereafter , an interface is about to pop up. On this interface you can select all the graphs you want to delete and then click on **Delete**.
 
 <br>
 
 **Pt.2 : Graph theory algorithms**
 
+**I/ Deep first search**
 
+protocols for using algorithm is quite similar for all of them.
+In the bootom of the screen , you shoud see inputs and **compute** buttons.
+
+Go to the section you corresponding to the algorithm you want to use , in my case **DFS**
+
+<img src="./assets/images/dfs_view.png" align="center">
+
+As written , tape the name of the graph and a root id (the root you want to use first in the algorithm) and then click on **Compute**.
+
+Once you had cliked  , a new graph will apear on the left panel , click on it to draw it.
+this graph represents the first graph browsed using **DFS** and started at **root** node.
+
+**exemple :**
+
+Initial graph :
+<img src="./assets/images/test_graph_view.png" >
+
+Resulting DFS with root equals 4 : 
+<img src="./assets/images/test_graph_dfs_view.png" >
+
+<br>
+<br>
+
+**II/ Breadth first search**
+
+Same as DFS. it also indicates you the order in which nodes had been visited during the algorithm.

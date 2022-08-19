@@ -1,10 +1,10 @@
 
-
+new bug id higher than the actual number of nodes , messes up with algos : refresh the node id when you delete a graph
 
 short term goals :
 
     - remove node (OK)
-    - move node
+    - move node (OK)
     - display vertex (create vertex and show them) (OK)
     - clear function so that I don't have to refreh the page each time i want a new drawing.
     - remove Node also remove all vertexes linked to this node (OK);
@@ -15,7 +15,7 @@ short term goals :
 
     - pop up that shows node value when hovered.
 
-    - value of BFS node is he distance between the root node (and implement a root node version)
+    - value of BFS node is he distance between the root node (and implement a root node version(OK))
 
     - JSDOC !!!!!
 

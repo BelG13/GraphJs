@@ -158,10 +158,11 @@ class Graph {
                 }
 
             }
+            this.updateId()
             return node;
         }
 
-        for(let i = his.vertexes.length - 1 ; i >= 0 ; i--){
+        for(let i = this.vertexes.length - 1 ; i >= 0 ; i--){
             var v  = this.vertexes[i]
             var n  = this.nodes[node]
 
@@ -171,7 +172,7 @@ class Graph {
             
         }
 
-
+        this.updateId()
         return this.nodes.splice(node , 1);
     }
 
@@ -203,6 +204,20 @@ class Graph {
         }
 
         return null;
+    }
+
+
+    updateId(){
+        /**
+        * update nodes'id
+        * @return {void}
+        */
+
+        this.idCounter = 0;
+
+        for(let node of this.nodes){
+            node.id = this.idCounter++;
+        }
     }
 
     draw(){

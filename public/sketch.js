@@ -132,6 +132,30 @@
     // -- end mousePressed -- //
 
 
+    // -- nouse dragged -- //
+
+    function mouseDragged(){
+
+        switch(MODE){ 
+            case 4: // => move node
+                try{
+                    var node = currentGraph.getNodebyClick(mouseX , mouseY)
+                    node.x = mouseX
+                    node.y = mouseY
+                }
+                catch(error){
+                    console.log(error);
+                }
+                break;
+
+            default:
+                break;
+        }
+    }    
+
+    // -- end -- //
+
+
 
     // -- draw -- //
 
