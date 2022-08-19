@@ -31,7 +31,7 @@ Missing basic features :
 
 At this point you should see this : 
 
-![view][assets/images/blank_view.png]
+![view!](assets/images/blank_view.png)
 
 ## Further explanations
 
