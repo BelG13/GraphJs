@@ -1,6 +1,13 @@
 
 class Node {
-    // a node is the basic tool that a graph is made up from.
+    /**
+     * 
+     * @param {Object|string|float} value - either all the data to create a clone node (value or x or y) or a simple value (string or float)
+     * @param {undefined|float} x - no need to give if value is an Object
+     * @param {undefined|float} y - no need to give if value is an Object
+     *
+     */
+
     constructor(value , x , y){
 
         if(value instanceof Object){
@@ -24,7 +31,10 @@ class Node {
     }
 
     draw() {
-        // shows the node
+        /**
+        * draw the node
+        * @return {void}
+        */
         noStroke()
         fill(255)
         ellipse(this.x , this.y , this.d , this.d)
@@ -34,7 +44,12 @@ class Node {
     }
 
     draw(listColor){
-        // shows the node with a particular color
+        /**
+        * draw the node with specified color
+        * @param {Array} - [red - O<255 , green - O<255 , blue - O<255]
+        * @return {void}
+        */
+
         noStroke()
         fill(listColor[0] , listColor[1] , listColor[2])
         ellipse(this.x , this.y , this.d , this.d)
@@ -47,12 +62,23 @@ class Node {
 
 class Vertex {
 
+    /**
+     * 
+     * @param {Node} nodeA 
+     * @param {Node} nodeB 
+     */
+
     constructor(nodeA , nodeB){
         this.nodeA = nodeA;
         this.nodeB = nodeB;
     }
 
     draw(){
+
+        /**
+        * draw the vertex
+        * @return {void}
+        */
 
         stroke(100 , 30 , 10)
         strokeWeight(2)
@@ -65,7 +91,14 @@ class Vertex {
 
 class Graph {
 
-    // represents a collection of Node.
+    /**
+     * represents a graph -  nodes and vertexes.
+     * 
+     * @param {String} name - graph's naame
+     * @param {float} r     - red color
+     * @param {float} g     - green color
+     * @param {float} b     - blue color
+     */
 
     constructor(name , r , g , b){
 
@@ -89,7 +122,12 @@ class Graph {
 
     add(node){
 
-        // we add a new node to the graph
+        /**
+        * Add a new node in the graph.
+        * @param {Node} 
+        * @return {void}
+        */
+
         if(node.value === null){
             node.value = this.counter++;
         }
@@ -102,7 +140,10 @@ class Graph {
     }
 
     remove(node){
-        // remove a node given as parameter
+        /**
+         * Remove the given Node from the graph.
+         * @param {(Node|int)}
+         */
 
         if(node instanceof Node){
 
@@ -135,23 +176,24 @@ class Graph {
     }
 
     findAndremove(nodeX , nodeY){
-        // find the node corresponding to nodeX and nodeY and remove it
+        /**
+         * Remove a Node using its coordinates
+         * @param {float} nodeX
+         * @param {float} nodeY
+         * @return {void}
+         */
 
-        for(let i = this.nodes.length - 1 ; i >= 0 ; i--){
-            var node = this.nodes[i]
-            
-            // the distance between the clicked point and the center of the node
-            // has to be less than the radius
-
-            if(dist(node.x , node.y , nodeX , nodeY) < node.d / 2){
-                this.remove(node)
-                return node;
-            }
-
-        }
+        this.remove(this.getNodebyClick(nodeX , nodeY))
     }
 
     getNodebyClick(x , y){
+        /**
+        * Return the node at the cooordinate x , y
+        * @param {float}
+        * @param {float}
+        * @return {Node|null} - return null if there is no Node in (x , y)
+        */
+
         for(let i = 0 ; i<this.nodes.length ; i++){
             var node = this.nodes[i]
 
@@ -164,7 +206,10 @@ class Graph {
     }
 
     draw(){
-        // draw the graph using the colors field.
+        /**
+        * Draw the Graph
+        * @return {void}
+        */
 
         // draw the vertex
         for(let v of this.vertexes){

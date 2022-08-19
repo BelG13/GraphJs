@@ -7,19 +7,13 @@
     const BOX_SIZE = 100;
 
     // variables
-    var          size;
-    var          MODE;
-    var  currentGraph;
-    var        graphs;
-    var  canvas_width;
     var canvas_height;
-
-    // mode gloabAL variable
-    var forConnect;
-
-
-    // client server
-    var socket;
+    var  currentGraph;
+    var  canvas_width;
+    var    forConnect; // store the nodes you want to connect using a vertex.
+    var        graphs;
+    var        socket;
+    var          MODE; // current mode
 
 // MAIN FUNCTIONS
     
@@ -28,11 +22,11 @@
     function setup(){
 
         // drawing setup
+        //TODO : better rendering
         canvas_height = innerHeight - 167
         canvas_width  =  innerWidth - 150
 
         createCanvas(canvas_width ,canvas_height)
-        size = max(Math.floor(width / BOX_SIZE) , Math.floor(height/ BOX_SIZE))
 
         //variables setup
         MODE         =    1;
@@ -68,6 +62,22 @@
         })
 
 
+        socket.on('bfs' , (data) => {
+            var newGraph = new Graph(data.name)
+
+            data.nodes.map(x => {
+                newGraph.add(new Node(x))
+            })
+
+            data.vertexes.map(x => {
+                newGraph.vertexes.push(new Vertex(x.nodeA , x.nodeB))
+            })
+
+            graphs.push(newGraph)
+            refresh()
+        })
+
+
     }
 
     // -- end setup --//
@@ -78,17 +88,23 @@
 
     function mousePressed() {
 
+        /**
+        * Do something dependiing on the current mode 
+        * @return {void}
+        */
+
         if(mouseX<0)return;
         if(mouseY > canvas_height)return;
 
         switch (MODE) {
             // each time we change the current mode we have to set forConnet to []
-            case 1:
+
+            case 1: // => add node
                 currentGraph.add(new Node( null , mouseX , mouseY))
                 forConnect = []
                 break;
 
-            case 2:
+            case 2: // => connect node
                 var node_ = currentGraph.getNodebyClick(mouseX , mouseY)
                 if(node_ == null) break;
 
@@ -101,13 +117,9 @@
 
                 break;
 
-            case 3:
+            case 3: // remove node
                 currentGraph.findAndremove(mouseX , mouseY)
                 forConnect = []
-                break;
-
-            case 4:
-                //TODO  delete selected graphs
                 break;
         
             default:
@@ -124,6 +136,11 @@
     // -- draw -- //
 
     function draw(){
+
+        /**
+        * draw everything
+        * @return {void}
+        */
 
         background(255);
         currentGraph == null ? () => {} : currentGraph.draw()

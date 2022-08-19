@@ -20,15 +20,16 @@
     
 </head>
 <body>
+    <!-- main container -->
 
     <div class="container">
         <div class="functions grid-item">
             
+            <!-- display all the graphs's name -->
             <div class="colOne"></div>
 
 
-            <!-- mode buttons -->
-
+            <!-- dislay the mode buttons -->
             <div class="colTwo">
                 <!-- add graph button -->
                 <button id="add-graph" class="functional">
@@ -52,61 +53,75 @@
 
                 <!-- remove a graph -->
                 <button id="rem-graph" class="functional alert">
-                    <img src="./static/images/delete_graph.svg" alt="rem_node">
+                    <img src="./static/images/delete_graph.svg" alt="rem_graph">
                 </button>
             </div>
 
             <!-- end mode buttons -->
         </div>
 
-
         <div class="graphs grid-item">
+            <!-- dislay the  current graph-->
             <main>
+                <!-- display the current mode -->
                 <div class="modeText">
                     
                 </div>
             </main>
+
+            <!-- display graph algorimhs and their inputs -->
             <div class="log grid-item">
 
+                <!-- hamiltonian cycle -->
                 <div class="log-elem">
 
                     <p>Hamiltonian cycle</p>
                     
                     <div class="further">
-                        <input type="text">
+                        <input type="text" id="hc" placeholder="name of the graph">
+                        <input type="text" id="hc-input-root" placeholder="root Id">
                         <button class="valid-algo" id="h-cycle">
                             Compute
                         </button>
                     </div>
 
                 </div>
+
+                <!-- DFS -->
                 <div class="log-elem">
                     <p>Deep first search</p>
                     
                     <div class="further">
-                        <input type="text" id="dfs-input">
+                        <input type="text" id="dfs-input" placeholder="name of the graph">
+                        <input type="text" id="dfs-input-root" placeholder="root Id">
                         <button class="valid-algo" id="dfs">
                             Compute
                         </button>
                     </div>
 
                 </div>
+
+                <!-- BFS -->
                 <div class="log-elem">
                     <p>breath first search</p>
                     
                     <div class="further">
-                        <input type="text">
+                        <input type="text" id="bfs-input" placeholder="name of the graph">
+                        <input type="text" id="bfs-input-root" placeholder="root Id">
                         <button class="valid-algo" id="bfs">
                             Compute
                         </button>
                     </div>
 
                 </div>
+
+                <!-- Test -->
                 <div class="log-elem">
                     <p>labelN</p>
                     
                     <div class="further">
-                        <input type="text">
+                        <input type="text" placeholder="test">
+                        <input type="text" placeholder="root Id">
                         <button class="valid-algo" id="labelN">
                             Compute
                         </button>

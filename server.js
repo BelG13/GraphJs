@@ -1,4 +1,5 @@
 const DFS     = require('./core/DFS')
+const BFS     = require('./core/BFS')
 const express = require('express')
 const app     = express()
 const PORT    = 3000
@@ -37,4 +38,17 @@ io.sockets.on('connection' , (socket) => {
       socket.emit('dfs' , DFS.DFS(data))
   })
 
+  
+
+    // if the server recive a 'bfs' message then 
+    // he compute the breadth first search from the given graph
+    // and emit the result.
+
+
+    socket.on('bfs' , (data) => {
+      socket.emit('bfs' , BFS.BFS(data))
+    })
+
 })
+
+

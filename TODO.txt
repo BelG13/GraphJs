@@ -15,6 +15,10 @@ short term goals :
 
     - pop up that shows node value when hovered.
 
+    - value of BFS node is he distance between the root node (and implement a root node version)
+
+    - JSDOC !!!!!
+
 
 middle term goals :
     - organize the code better.

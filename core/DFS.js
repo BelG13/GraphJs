@@ -6,19 +6,22 @@ const { Socket } = require('socket.io')
 
 function DFS(data){
 
-    // data represents a given graph we want to compute the dfs for
-    // this function returns an Object that contains all the informations 
-    // corresponding to the given data browsed using deep first search
+    /**
+     * use the deep first search algorithm on the grave given in data
+     * @param {Object} data - {graph , root}
+     * @return {object} - contains all the nodes in the order they appered in the dfs.
+     */
 
+    var {graph , root} = data
     var visited   = {}
 
     var newGraph  = {
-        name :`${data.name}-DFS`,
+        name :`${graph.name}-DFS-${root.id}`,
         nodes: [],
     }
 
     // at the begining all the nodes are unvisited
-    data.nodes.map(node => {
+    graph.nodes.map(node => {
         visited[""+node.id] = false;
     })
 
@@ -31,14 +34,14 @@ function DFS(data){
 
         visited[""+node.id] = true
 
-        // we add the data corresponding to the node just visited
+        // we add the node corresponding to the node just visited
         newGraph.nodes.push({
             x:node.x,
             y:node.y,
             value:node.value,
         })
 
-        for(let neighbor of utils.getNeighbors(data , node)){
+        for(let neighbor of utils.getNeighbors(graph , node)){
             if(!visited[""+neighbor.id]){
                 reccur(neighbor);
             }
@@ -46,7 +49,7 @@ function DFS(data){
     }
 
 
-    reccur(data.nodes[0]) //TODO : I can begin anywhere in the graph.
+    reccur(root)
     return newGraph;
 
 }
